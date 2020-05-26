@@ -18,26 +18,26 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="text-center">{{item.name}}</h5>
+                        <h5 class="text-center">{Image Name: {item.name}}</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
                         <img src="{{item.Image_image.url}}" class="img-responsive" alt="">
-                        <p>{{item.description}}</p>
+                        <p> Image Description: {{item.description}}</p>
                     </div>
                     <div class="modal-footer">
-                        <p style="color:lawngreen; font-size:16px;">Posted {{item.pub_date|timesince}}</p>
+                        <p style="color:rgb(7, 7, 6); font-size:100%;">Date Posted {{item.pub_date|timesince}}</p>
                         <br>
                         <button type="button" class="btn btn-outline-danger btn-bg" data-dismiss="modal"
-                            data-toggle="tooltip" data-placement="right" title="Close Single Image">Close</button>
+                            data-toggle="tooltip" data-placement="right" title="Close Single Image">X</button>
                         <br>
                         <input type="text" value="{{item.Image_image.url}}" id="myInput" style="color:black;">
                         <button type="button" value="{{item.Image_image.url}}" onclick="copyLink(this.value)"
-                            class="btn btn-outline-success" data-toggle="tooltip" data-placement="right"
+                            class="btn btn-success" data-toggle="tooltip" data-placement="right"
                             title="Copy Image">Copy
-                            Image url</button>
+                            </button>
                     </div>
                 </div>
             </div>
@@ -50,7 +50,7 @@
                 copyText.select();
                 document.execCommand("copy");
                 /* Alert the copied text */
-                alert("Text Copied : " + copyText.value);
+                alert("Copied Path : " + copyText.value);
             }
         </script>
     </div>
