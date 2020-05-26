@@ -1,17 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link
+      href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Lobster&family=Quattrocento:wght@700&display=swap"
+      rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Lobster&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 </head>
+
 <body>
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="{% url 'postToday' %}">My Gallery</a>
-    </div>
-  </div>
-</nav>
+  <section class="hero is-warning">
+      <p style="margin-left:43%; margin-top:3%; font-family: 'Abril Fatface', cursive; font-size: 300%; ">MY GALLERY
+      </p>
+      <div class="ui secondary  menu">
+
+          <a class="item" href="{% url 'imageToday' %}"
+              style="margin-bottom: 15px; font-family: 'Quattrocento', serif;">
+              Home
+          </a>
+
+          <div class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false"
+                  style="font-size:100%; font-family: 'Quattrocento', serif;">
+                  Category
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown"
+                  style="background-color:white; font-family: 'Quattrocento', serif;">
+                  {% for data in category %}
+                  <a class="dropdown-item"
+                      `style=" color:black;font-size: 100%; font-family: 'Quattrocento', serif;">{{data.name}}</a>
+                  <div class="dropdown-divider"></div>
+                  {% endfor %}
+              </div>
+          </div>
+
+
+          <div class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false"
+                  style="font-size:100%; font-family: 'Quattrocento', serif;">
+                  Location
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color:white;">
+                  {% for item in location %}
+                  <a class="dropdown-item" href="/location/{{item.name}}"
+                      style=" color:black;font-size: 100%; font-family: 'Quattrocento', serif;">{{item.name}}</a>
+                  <div class="dropdown-divider"></div>
+                  {% endfor %}
+              </div>
+          </div>
+
+          <div class="col-sm-4 col-md-4 navbar-right">
+              <form class="navbar-form" role="search" action="{% url 'search_results' %}">
+                  <div class="input-group">
+                      <input type="text" class="form-control form-rounded" placeholder="Search Image Here"
+                          name="picture">
+                      <div class="input-group-btn" style="margin-right:50px;">
+                          <button class="btn btn-outline-light btn-xl btn-circle.btn-xl" style="margin-left:0.5px"
+                              type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                      </div>
+                  </div>
+
+              </form>
+          </div>
+      </div>
+  </section>
 </body>
-</html>
