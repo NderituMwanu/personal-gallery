@@ -24,16 +24,17 @@ class ImageTestClass(TestCase):
     def setUp(self):
 
         #Posting a new image and saving it
-        self.newphoto = Image(image_name ="test.jpg", image_description = "abcd", pub_date = "12-3-2020")
+        self.newphoto = Image(image_name ="deafults.jpg", image_description = "sampleimage", pub_date = "12-3-2020")
         self.newphoto.save_image()
 
 
         #deletion of an image
-        self.newphoto = Image(image_name ="test.jpg", image_description = "abcd", pub_date = "12-3-2020")
+        self.newphoto = Image(image_name ="defaults.jpg", image_description = "samplimage", pub_date = "12-3-2020")
         self.newphoto.delete_image()
 
 
 
-    def test_get_image_by_id(self):
-        image_id = Image.post_of_today()
-        self.assertTrue(len(today_news) > 0) 
+    def tearDown(self):
+        Image.objects.all().delete()
+        Editor.objects.all().delete()
+         
