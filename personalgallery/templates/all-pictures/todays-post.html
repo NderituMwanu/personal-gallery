@@ -1,5 +1,24 @@
 {% extends 'all-pictures/base.html'%}
-
 {% block content %}
 {{block.super}}
+
+<div class="container">
+    <!--Looping through posts-->
+
+    {% for item in image %}
+
+    <div class = "row">
+        <!--Displaying image's name-->
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <h2 class = "text-center"> {{image.image_name}} </h2>
+        </div>
+    </div>
+
+    <!--Displaying the actual Image-->
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <img src =" {{image.post_image.url}} " class="img-responsive" alt="Image">
+    </div>
+    
+    {% endfor %}
+</div>
 {% endblock %}
