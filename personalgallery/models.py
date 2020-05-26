@@ -28,11 +28,20 @@ class Category(models.Model):
 
 # Function for the Image location 
 class Location(models.Model):
-    image_location = models.CharField(max_length =30)
-    
+    name = models.CharField(max_length=40)
 
     def __str__(self):
-        return self.image_location
+        return self.name
+
+    class Meta:
+        ordering = ['name']
+
+    def save_location(self):
+        self.save()
+
+    def delete_location(self):
+        self.delete()
+ 
 
     
     
@@ -41,23 +50,35 @@ class Location(models.Model):
 class Image(models.Model):
     image_name = models.CharField(max_length =30)
     image_description = models.CharField(max_length = 500)
-    Username = models.ForeignKey(Editor, on_delete=models.CASCADE)
+    # image_category = models.CharField(max_length = 30, default="none")
+    username = models.ForeignKey(Editor, on_delete=models.CASCADE)
     location = models.ForeignKey(Location, on_delete=models.CASCADE)
     pub_date = models.DateTimeField(auto_now_add=True)
     post_image = models.ImageField(upload_to = 'images/', default='default.png')
 
     def __str__(self):
-        return self.post_image
+        return self.image_name
 
+    class Meta:
+        ordering = ['name']
 
-    @classmethod
-    def post_of_today(cls):
-        today = dat.date.today()
-        image = cla.objects.filter(pub_date__date = today)
-        return image
-    
     def save_image(self):
         self.save()
 
     def delete_image(self):
         self.delete()
+
+    @classmethod
+    def search_by_category(cls,search_term):
+        gallery = cls.objects.filter(category__name__icontains=search_term)
+        return gallery
+
+    @classmethod
+    def gallery_images(cls):
+        gallery = cls.objects.all()
+        return gallery
+
+    @classmethod
+    def get_by_location(cls,search_term):
+        gallery = cls.objects.filter(location__name__icontains=search_term)
+        return gallery
