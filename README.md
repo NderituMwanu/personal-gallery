@@ -1,9 +1,10 @@
 # Project Title
 
 My Personal Gallery
+
 # Authors :
 
-Gerald Nderitu And
+Gerald Nderitu
 
 
 ### Project Description
@@ -11,14 +12,14 @@ Gerald Nderitu And
 My Personal Gallery is a web-based application that displays images posted and details about them. The application allows the user to view different photos that interest them, click on a single photo and have it expanded to see the details, search for different categories, vie photos based on location and copy a link to the photo to share with friends.
 
 ### USER Stories 
-
+```
 1. View different photos that interest me.
 2. Click on a single photo to expand it and also view the details of the photo. The photo details must appear on a modal within the
    same route as the main page.
 3. Search for different categories of photos. (ie. Travel, Food)
 4. Copy a link to the photo to share with my friends.
 5. View photos based on the location they were taken.
-
+```
 ## SetUp Instructions
 
 Navigate to the desired location on your local machine and Clone or download this repository using the following command:
@@ -56,10 +57,9 @@ pip install django
 
 Other packages you need to install, type the following:
 ```
-pillow for image uploads
+1. pillow: for image uploads
 
-
-pip install Bootstrap-3
+2. Bootstrap
 ```
 
 Django enables you to create an admin page so you can create a superuser and set the username and password.
